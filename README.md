@@ -1,4 +1,4 @@
-# Projeto: Catálogos de Produtoso
+# Projeto: Catálogos de Produtos
 
 Este projeto utiliza **Vite** como bundler, **React** para construção da interface e **TypeScript** para melhor tipagem e segurança do código.
 
