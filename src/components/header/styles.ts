@@ -9,6 +9,7 @@ export const Container = styled.div`
   width: 100%;
   background: ${({ theme }) => theme.colors.primaryGradient};
   padding-top: ${({ theme }) => theme.spacing.medium};
+  position: fixed;
 `;
 
 export const MainBox = styled.main`

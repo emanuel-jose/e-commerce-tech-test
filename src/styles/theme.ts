@@ -2,7 +2,9 @@ interface Colors {
   primary: string;
   primaryBg: string;
   primaryGradient: string;
+  primaryShadow: string;
   white: string;
+  border: string;
 }
 
 interface Typography {
@@ -30,7 +32,9 @@ export const lightTheme: Theme = {
     primary: "#ee4d2d",
     primaryBg: "#fef6f5",
     primaryGradient: "linear-gradient(#ee4d2d, #ff7337)",
+    primaryShadow: "rgba(238, 77, 45, 0.5)",
     white: "#fff",
+    border: "rgba(0, 0, 0, 0.09);",
   },
   fontSizes: {
     small: "0.75rem",
@@ -50,7 +54,9 @@ export const darkTheme: Theme = {
     primary: "#ee4d2d",
     primaryBg: "#fef6f5",
     primaryGradient: "linear-gradient(#ee4d2d, #ff7337)",
+    primaryShadow: "rgba(238, 77, 45, 0.5)",
     white: "#fff",
+    border: "rgba(0, 0, 0, 0.09);",
   },
   fontSizes: {
     small: "0.75rem",
