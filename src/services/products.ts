@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { ProductCategory } from "../types/productCategoriesType";
 import { ProductsResponse } from "../types/productTypes";
 
 interface RequestProducst {
@@ -7,6 +8,10 @@ interface RequestProducst {
   search?: string;
   sortBy?: string;
   order?: "asc" | "desc";
+}
+
+interface RequestProductCategory extends RequestProducst {
+  category: string;
 }
 
 export const dummyProductApi = createApi({
@@ -19,7 +24,24 @@ export const dummyProductApi = createApi({
           skip ?? 0
         }&sortBy=${sortBy ?? ""}&order=${order ?? ""}`,
     }),
+    getAllCategories: builder.query<ProductCategory[], void>({
+      query: () => `/categories`,
+    }),
+
+    getProductsByCategory: builder.query<
+      ProductsResponse,
+      RequestProductCategory
+    >({
+      query: ({ category, limit, order, skip, sortBy }) =>
+        `/category/${category}?limit=${limit ?? 20}&skip=${skip ?? 0}&sortBy=${
+          sortBy ?? ""
+        }&order=${order ?? ""}`,
+    }),
   }),
 });
 
-export const { useLazyGetAllProductsQuery } = dummyProductApi;
+export const {
+  useLazyGetAllProductsQuery,
+  useLazyGetAllCategoriesQuery,
+  useLazyGetProductsByCategoryQuery,
+} = dummyProductApi;

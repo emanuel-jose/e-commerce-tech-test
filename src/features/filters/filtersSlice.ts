@@ -4,11 +4,13 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface FiltersState {
   sortBy: string;
   order: "asc" | "desc";
+  category: string;
 }
 
 const initialState: FiltersState = {
   sortBy: "",
   order: "asc",
+  category: "",
 };
 
 export const filtersSlice = createSlice({
@@ -21,12 +23,28 @@ export const filtersSlice = createSlice({
     changeOrder: (state, action: PayloadAction<"asc" | "desc">) => {
       state.order = action.payload;
     },
+    changeCategory: (state, action: PayloadAction<string>) => {
+      state.category = action.payload;
+    },
+    resetSort: (state) => {
+      state.sortBy = "";
+    },
+    resetOrder: (state) => {
+      state.order = "asc";
+    },
     resetFilters: (state) => {
       state = initialState;
     },
   },
 });
 
-export const { addSort, changeOrder } = filtersSlice.actions;
+export const {
+  addSort,
+  changeOrder,
+  changeCategory,
+  resetFilters,
+  resetOrder,
+  resetSort,
+} = filtersSlice.actions;
 
 export default filtersSlice.reducer;

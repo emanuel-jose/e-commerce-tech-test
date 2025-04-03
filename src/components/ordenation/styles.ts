@@ -11,6 +11,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: flex-start;
   gap: 1.5rem;
   color: #555;

@@ -9,35 +9,54 @@ import { useProduct } from "../../hooks/useProducts";
 import { Container, InnerProductWrapper, ProductListWrapper } from "./styles";
 
 function Home() {
-  const { handleGetAllProducts, products, loading, pageSize, totalElements } =
-    useProduct();
+  const {
+    handleGetAllProducts,
+    products,
+    loading,
+    pageSize,
+    totalElements,
+    handleGetAllCategories,
+    categories,
+    handleGetProductsByCategory,
+    categoryProdLoading,
+  } = useProduct();
   const searchValue = useAppSelector((state: RootState) => state.search.value);
   const currentPage = useAppSelector(
     (state: RootState) => state.pagination.currentPage
   );
   const { order, sortBy } = useAppSelector((state: RootState) => state.filters);
+  const category = useAppSelector((state: RootState) => state.filters.category);
 
   useEffect(() => {
     handleGetAllProducts();
+    handleGetAllCategories();
   }, []);
 
   useEffect(() => {
     handleGetAllProducts(searchValue, currentPage, sortBy, order);
   }, [searchValue, currentPage, sortBy, order]);
 
+  useEffect(() => {
+    if (category) {
+      handleGetProductsByCategory(category);
+    } else {
+      handleGetAllProducts();
+    }
+  }, [category]);
+
   return (
     <Container>
       <Header />
       <ProductListWrapper>
-        {loading ? (
+        {loading || categoryProdLoading ? (
           <span>Loading...</span>
         ) : (
           <>
-            <Filters />
+            <Filters categories={categories ?? []} />
             <InnerProductWrapper>
               <Ordenation />
               <ProductList
-                products={products ?? []}
+                products={products?.products ?? []}
                 pageSize={pageSize ?? 0}
                 totalElements={totalElements ?? 0}
               />
