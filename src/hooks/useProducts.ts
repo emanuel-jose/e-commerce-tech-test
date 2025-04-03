@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   useLazyGetAllCategoriesQuery,
   useLazyGetAllProductsQuery,
+  useLazyGetProductByIdQuery,
   useLazyGetProductsByCategoryQuery,
 } from "../services/products";
 import { ProductsResponse } from "../types/productTypes";
@@ -27,6 +28,15 @@ export const useProduct = () => {
       isLoading: categoryProdLoad,
     },
   ] = useLazyGetProductsByCategoryQuery();
+
+  const [
+    getProductById,
+    {
+      currentData: selectProduct,
+      isFetching: selectProdFetch,
+      isLoading: selectProdLoad,
+    },
+  ] = useLazyGetProductByIdQuery();
 
   const handleGetAllProducts = (
     search?: string,
@@ -67,10 +77,19 @@ export const useProduct = () => {
       .catch((err) => console.error(err));
   };
 
+  const handleGetProductById = (productId: number) => {
+    getProductById(productId)
+      .unwrap()
+      .catch((err) => console.log(err));
+  };
+
   return {
     handleGetAllProducts,
     handleGetAllCategories,
     handleGetProductsByCategory,
+    handleGetProductById,
+    selectProduct,
+    selectProductLoading: selectProdFetch || selectProdLoad,
     products,
     loading: isFetching || isLoading,
     pageSize: products?.limit,

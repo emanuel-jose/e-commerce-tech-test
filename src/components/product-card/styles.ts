@@ -1,12 +1,13 @@
 import { lighten } from "polished";
 import styled from "styled-components";
 
-export const ProductWrapper = styled.div`
+export const ProductWrapper = styled.button`
   border: 1px solid ${({ theme }) => theme.colors.border};
   max-width: 11.875rem;
   border-radius: 0.15rem;
   display: flex;
   flex-direction: column;
+  background-color: transparent;
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.primary};

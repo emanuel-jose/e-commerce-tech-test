@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ProductCategory } from "../types/productCategoriesType";
-import { ProductsResponse } from "../types/productTypes";
+import { Products, ProductsResponse } from "../types/productTypes";
 
 interface RequestProducst {
   limit?: number;
@@ -37,6 +37,10 @@ export const dummyProductApi = createApi({
           sortBy ?? ""
         }&order=${order ?? ""}`,
     }),
+
+    getProductById: builder.query<Products, number>({
+      query: (productId) => `/${productId}`,
+    }),
   }),
 });
 
@@ -44,4 +48,5 @@ export const {
   useLazyGetAllProductsQuery,
   useLazyGetAllCategoriesQuery,
   useLazyGetProductsByCategoryQuery,
+  useLazyGetProductByIdQuery,
 } = dummyProductApi;

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import { useTheme } from "styled-components";
 import StarIcon from "../../shared/svg/star-icon";
 import { Products } from "../../types/productTypes";
@@ -20,8 +21,9 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const theme = useTheme();
+  const navigate = useNavigate();
   return (
-    <ProductWrapper>
+    <ProductWrapper onClick={() => navigate(`/${product.id}`)}>
       <Image src={product.thumbnail} alt={product.title} />
       <InfoWrapper>
         <Title>{product.title}</Title>

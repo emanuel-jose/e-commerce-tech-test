@@ -16,3 +16,8 @@ export const percentageMask = (value: number) => {
 export const ratingMask = (value: number) => {
   return value.toFixed(1);
 };
+
+export const dateFormat = (value: string) => {
+  const date = new Date(value);
+  return date.toLocaleDateString("pt-Br");
+};

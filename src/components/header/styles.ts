@@ -23,7 +23,7 @@ export const MainBox = styled.main`
   gap: ${({ theme }) => theme.spacing.small};
 `;
 
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.form`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -50,4 +50,10 @@ export const Button = styled.button<ButtonProps>`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+`;
+
+export const EButton = styled.button`
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
 `;
