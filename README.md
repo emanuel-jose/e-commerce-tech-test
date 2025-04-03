@@ -12,6 +12,7 @@ Antes de começar, certifique-se de ter instalado:
 ## 🚀 Instalação
 
 1. Clone o repositório:
+
    ```sh
    git clone https://github.com/emanuel-jose/e-commerce-tech-test.git
    cd e-commerce-tech-test
@@ -25,21 +26,23 @@ Antes de começar, certifique-se de ter instalado:
 ## ▶️ Executando o projeto
 
 Para rodar o ambiente de desenvolvimento:
+
 ```sh
 npm run dev  # ou yarn dev / pnpm dev
 ```
 
 A aplicação estará disponível em: [http://localhost:5173](http://localhost:5173)
 
-
 ## 🔗 Links
+
 - [Documentação do Vite](https://vitejs.dev/)
 - [Documentação do React](https://react.dev/)
 - [Documentação do TypeScript](https://www.typescriptlang.org/)
+- [Documentação Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
+- [Documentação RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
 
 ---
 
 🚀 **Projeto criado com Vite + React + TypeScript**
 
 🚀 **Desenvolvido por Emanuel**
-
